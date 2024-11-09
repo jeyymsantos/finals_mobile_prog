@@ -186,6 +186,7 @@ class _HomePageState extends State<RegistrationScreen> {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
+      backgroundColor: Colors.blue,
       resizeToAvoidBottomInset: false,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -241,7 +242,7 @@ class _HomePageState extends State<RegistrationScreen> {
                     child: SizedBox(
                       width: screenWidth / 2 - 70,
                       height: screenWidth / 2 - 70,
-                      child: Icon(Icons.image,
+                      child: Icon(Icons.photo_camera_front_rounded,
                           color: Colors.blue, size: screenWidth / 7),
                     ),
                   ),
@@ -256,7 +257,7 @@ class _HomePageState extends State<RegistrationScreen> {
                     child: SizedBox(
                       width: screenWidth / 2 - 70,
                       height: screenWidth / 2 - 70,
-                      child: Icon(Icons.camera,
+                      child: Icon(Icons.camera_alt,
                           color: Colors.blue, size: screenWidth / 7),
                     ),
                   ),

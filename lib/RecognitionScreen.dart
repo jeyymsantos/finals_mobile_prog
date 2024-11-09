@@ -187,6 +187,7 @@ class _HomePageState extends State<RecognitionScreen> {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
+      backgroundColor: Colors.blue,
       resizeToAvoidBottomInset: false,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -242,7 +243,7 @@ class _HomePageState extends State<RecognitionScreen> {
                     child: SizedBox(
                       width: screenWidth / 2 - 70,
                       height: screenWidth / 2 - 70,
-                      child: Icon(Icons.image,
+                      child: Icon(Icons.photo_camera_front_rounded,
                           color: Colors.blue, size: screenWidth / 7),
                     ),
                   ),
@@ -257,7 +258,7 @@ class _HomePageState extends State<RecognitionScreen> {
                     child: SizedBox(
                       width: screenWidth / 2 - 70,
                       height: screenWidth / 2 - 70,
-                      child: Icon(Icons.camera,
+                      child: Icon(Icons.camera_alt,
                           color: Colors.blue, size: screenWidth / 7),
                     ),
                   ),
@@ -291,7 +292,7 @@ class FacePainter extends CustomPainter {
       canvas.drawRect(rectangle.location, p);
 
       TextSpan span = TextSpan(
-          style: const TextStyle(color: Colors.white, fontSize: 30),
+          style: const TextStyle(color: Colors.white, fontSize: 150),
           text: "${rectangle.name}  ${rectangle.distance.toStringAsFixed(2)}");
       TextPainter tp = TextPainter(
           text: span,

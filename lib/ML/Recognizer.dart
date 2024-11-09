@@ -5,6 +5,8 @@ import 'package:image/image.dart' as img;
 import 'package:tflite_flutter/tflite_flutter.dart';
 import '../DB/DatabaseHelper.dart';
 import 'Recognition.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class Recognizer {
   late Interpreter interpreter;
@@ -112,6 +114,18 @@ class Recognizer {
     //TODO looks for the nearest embeeding in the database and returns the pair
     Pair pair = findNearest(outputArray);
     print("distance= ${pair.distance}");
+
+    // Save the recognition result to Firestore
+    FirebaseFirestore.instance
+        .collection('history')
+        .add({
+          'name': pair.name, // Name recognized
+          'distance': pair.distance, // Location coordinates as a map
+          'recognizedAt': FieldValue
+              .serverTimestamp() // Optional: timestamp for the recognition event
+        })
+        .then((value) => print("Recognition saved with ID: ${value.id}"))
+        .catchError((error) => print("Failed to save recognition: $error"));
 
     return Recognition(pair.name, location, outputArray, pair.distance);
   }
